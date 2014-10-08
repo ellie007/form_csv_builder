@@ -1,0 +1,26 @@
+<h1>List of Form Submissions</h1>
+
+<p><%= link_to 'New Form Submission', new_form_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @forms.each do |form| %>
+    <tr>
+      <td><%= form.title %></td>
+      <td><%= form.body %></td>
+
+      <td><%= link_to 'Show', form_url(form) %></td>
+      <td><%= link_to 'Edit', edit_form_url(form) %></td>
+      <td><%= link_to 'Destroy', form_url(form), method: 'delete', data: { confirm: "Do you really want to delete this form?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>

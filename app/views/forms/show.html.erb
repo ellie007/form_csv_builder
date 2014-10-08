@@ -1,0 +1,18 @@
+<h1>Form #<%= @form.id %></h1>
+
+<p>
+  <b>Title:</b>
+  <%= @form.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @form.body %>
+</p>
+
+<td><%= link_to 'Edit', edit_form_url(@form) %></td>
+<td><%= link_to 'Delete', form_url(@form), method: 'delete', data: { confirm: "Do you really want to delete this form?" } %></td>
+<td><%= link_to 'Back', forms_url %></td>
+
+
+
