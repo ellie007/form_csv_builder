@@ -20,6 +20,14 @@ class FormsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv; charset=UTF-8'
+        response.headers['Content-Disposition'] = "attachment; filename=form_#{@form.id}.csv"
+        render :template=> "forms/show.csv.erb"
+      end
+    end
   end
 
   def edit
@@ -38,8 +46,8 @@ class FormsController < ApplicationController
     redirect_to forms_url
   end
 
-
 private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @form = Form.find(params[:id])
